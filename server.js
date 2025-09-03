@@ -26,28 +26,10 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration
-const allowedOrigins = [
-  "http://localhost:3000", // Local frontend (Next.js default port)
-  "http://51.21.202.114/",
-  "https://firmable-frontend.vercel.app", // Vercel frontend
-  "https://firmable-frontend-git-main-manishkhulbes-projects.vercel.app", // Vercel preview
-  "https://firmable-frontend-plpznj18h-manishkhulbes-projects.vercel.app/", // Vercel develop branch
-];
-
+// CORS configuration - Allow all origins
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        console.log("CORS blocked origin:", origin);
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: true, // Allow all origins
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
