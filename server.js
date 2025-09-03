@@ -28,7 +28,8 @@ app.use(limiter);
 
 // CORS configuration
 const allowedOrigins = [
-  "http://localhost:3001", // Local frontend
+  "http://localhost:3000", // Local frontend (Next.js default port)
+  "http://51.21.202.114/",
   "https://firmable-frontend.vercel.app", // Vercel frontend
   "https://firmable-frontend-git-main-manishkhulbes-projects.vercel.app", // Vercel preview
   "https://firmable-frontend-plpznj18h-manishkhulbes-projects.vercel.app/", // Vercel develop branch
