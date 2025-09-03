@@ -32,7 +32,7 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1
+      - NEXT_PUBLIC_API_URL=http://51.21.202.114/api/v1
     restart: unless-stopped
     depends_on:
       - backend
