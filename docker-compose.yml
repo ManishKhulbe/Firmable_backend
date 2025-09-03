@@ -24,6 +24,21 @@ services:
     networks:
       - firmable-network
 
+  frontend:
+    build:
+      context: ../Frontend
+      dockerfile: Dockerfile
+    container_name: firmable-frontend
+    ports:
+      - "3001:3001"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3000/api/v1
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - firmable-network
+
 networks:
   firmable-network:
     driver: bridge
