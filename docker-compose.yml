@@ -7,9 +7,11 @@ services:
     container_name: firmable-backend
     ports:
       - "3000:3000"
+    env_file:
+      - ../.env
     environment:
       # MongoDB Configuration
-      - MONGODB_URI=mongodb+srv://karan:passworD@cluster0.bxumy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - MONGODB_URI=${MONGODB_URI:-mongodb://localhost:27017/firmable}
       - DB_NAME=firmable
 
       # Server Configuration
@@ -20,7 +22,7 @@ services:
       - CORS_ORIGINS=*
 
       # Security Settings
-      - JWT_SECRET=your-super-secret-jwt-key-here-change-in-production
+      - JWT_SECRET=${JWT_SECRET:-your-super-secret-jwt-key-here-change-in-production}
       - BCRYPT_ROUNDS=12
 
       # Rate Limiting
